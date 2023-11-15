@@ -1,0 +1,13 @@
+<form action="" class="p-2">
+    <div class="mt-2">
+        <label for="name" class="font-semibold">Nome do Investimento</label>
+        <input type="text" id="name" name="name" [(ngModel)]="investimento.name" placeholder="name invest" class="p-2 w-full  bg-gray-100 rounded">
+    </div>
+    <div class="mt-2">
+        <label for="value" class="font-semibold">Valor do Investimento</label>
+        <input type="text" id="value" name="value"  [(ngModel)]="investimento.valor" placeholder="value invest" class="p-2 w-full  bg-gray-100 rounded">
+    </div>
+    
+    <button (click)="salvar()" class="bg-blue-800 text-white rounded p-2 mt-2">Salvar</button>
+    <button (click)="cancelar()" class="bg-red-800 text-white rounded p-2 mt-2 ml-2 ">Cancelar</button>
+</form>

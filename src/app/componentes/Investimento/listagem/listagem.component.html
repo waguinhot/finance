@@ -1,0 +1,38 @@
+<div *ngIf="listaInvestimentos.length > 0, else semInvestimentos" >
+     <div class="flex p-10 font-bold">
+        <div class="w-2/12">
+          
+            Nome
+         </div>
+         <div class="w-2/12">
+            Valor
+     
+         </div>
+         <div class="w-2/12">
+            Adicional
+     
+         </div>
+         <div class="w-2/12">
+            Data do Investimento
+     
+         </div>
+         <div class="w-2/12">
+            Total
+         </div>
+     
+        <div class="w-2/12 ">
+            ACTIONS
+        </div>
+    </div>
+       
+    <div *ngFor="let investimento of listaInvestimentos">
+        <app-card [investimento]="investimento"></app-card>
+    </div>
+    
+</div>
+
+<ng-template #semInvestimentos>
+    <div>
+        <p> sem pensamentos cadastrados</p>
+    </div>
+</ng-template>
