@@ -1,0 +1,30 @@
+
+<h1 class="text-2xl text-center mt-4">Investimento <b>{{investimento.name}}</b></h1>
+
+<div class="flex">
+    <div class="w-6/12 m-6  shadow-2xl p-4 rounded">
+        <h1 class="text-center text-2xl">DADOS</h1>
+        <div >
+            <div class="w-6/12 text-center">
+               <div class="block"> Nome: {{investimento.name}}</div>
+                <div class="block">Valor Investido: {{investimento.valor}}R$</div>
+                <div class="block">Data Investimento: {{investimento.date}}</div>
+                <div class="block">Total: {{investimento.total}}</div>
+                <div class="block">Ultimo Adicionaal: {{investimento.adicional}}</div>
+            </div>
+        </div>
+    </div>
+        <div *ngIf="historico.length > 0 , else semHistorico" class="w-6/12 m-6  shadow-2xl p-4 rounded">
+            <h1 class="text-center text-2xl">Historico</h1>
+            <div *ngFor="let history of historico" class="flex ">
+                <div class="w-6/12 text-center">Valor: {{history.value}} </div><div class="w-6/12 text-center">Data: {{history.date}}</div> 
+            </div>
+        </div>
+    
+</div>
+
+<ng-template #semHistorico>
+    <div>
+        <p> sem historico cadastrado</p>
+    </div>
+</ng-template>

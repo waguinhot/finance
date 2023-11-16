@@ -18,8 +18,9 @@ export class InvestimentoServiceService {
   }
 
   getInvestimentoUnico(id: number): Observable<InvestimentoInterface>
-  {
-    return this.http.get<InvestimentoInterface>(this.API);
+  { 
+    const url = this.API + 'investimento/'+id;
+    return this.http.get<InvestimentoInterface>(url);
   }
 
   saveInvestimento(investimento: InvestimentoInterface): Observable<InvestimentoInterface>

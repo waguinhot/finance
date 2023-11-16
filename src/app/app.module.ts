@@ -10,6 +10,7 @@ import { ListagemComponent } from './componentes/Investimento/listagem/listagem.
 import { RegisterComponent } from './componentes/Investimento/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ViewComponent } from './componentes/Investimento/view/view.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     CardComponent,
     ListagemComponent,
-    RegisterComponent
+    RegisterComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
