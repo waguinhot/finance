@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { InvestimentoInterface } from '../interfaces/InvestimentoInterface';
+import { HistoricoInterface } from '../interfaces/HistoricoInterface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InvestimentoServiceService {
 
-  private readonly API = 'http://investapi.test/api/';
+  private readonly API = 'http://apifinance.test/api/';
+
+ 
   constructor(private http: HttpClient) { }
 
   getInvestimentos(): Observable<InvestimentoInterface[]>

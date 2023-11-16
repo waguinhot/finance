@@ -28,3 +28,15 @@
         <p> sem historico cadastrado</p>
     </div>
 </ng-template>
+
+<form action="" class="shadow-2xl p-4 m-6" [formGroup]="historic">
+    <div class="block">
+     <label for="historic" class="text-center text-2xl block" >Novo Historico</label>
+     <input 
+        type="number" 
+        formControlName="value" 
+        class="w-3/12 h-12 p-4 rounded bg-gray-100" 
+        placeholder="adicionar novo historico">
+    </div>
+     <button (click)="salvar()" class="bg-red-500 p-2 text-white rounded mt-2 font-semibold">Salvar</button>
+ </form>

@@ -1,13 +1,41 @@
-<form action="" class="p-2">
+<form action="" class="p-2" [formGroup]="formulario">
     <div class="mt-2">
         <label for="name" class="font-semibold">Nome do Investimento</label>
-        <input type="text" id="name" name="name" [(ngModel)]="investimento.name" placeholder="name invest" class="p-2 w-full  bg-gray-100 rounded">
+        <input 
+            type="text" 
+            id="name" 
+            placeholder="name invest" 
+            class="p-2 w-full  bg-gray-100 rounded"
+            formControlName="name"
+            >
+            <div *ngIf="formulario.get('name')?.errors?.['required'] && formulario.get('name')?.touched" class="text-red-600 mt-2 ml-4">
+                O nome e obrigatorio!
+            </div>
+            <div *ngIf="formulario.get('name')?.errors?.['minlength'] && formulario.get('name')?.touched" class="text-red-600 mt-2 ml-4">
+                O nome deve conter no minimo 3 caracteres
+            </div>
     </div>
     <div class="mt-2">
         <label for="value" class="font-semibold">Valor do Investimento</label>
-        <input type="text" id="value" name="value"  [(ngModel)]="investimento.valor" placeholder="value invest" class="p-2 w-full  bg-gray-100 rounded">
+        <input 
+            type="text" 
+            id="value"  
+            placeholder="value invest" 
+            class="p-2 w-full  bg-gray-100 rounded"
+            formControlName="valor"
+            >
+            <div *ngIf="formulario.get('valor')?.errors?.['required'] && formulario.get('valor')?.touched" class="text-red-600 mt-2 ml-4" >
+                O valor e obrigatorio!
+            </div>
+            <div *ngIf="formulario.get('valor')?.errors?.['minlength'] && formulario.get('valor')?.touched" class="text-red-600 mt-2 ml-4">
+                O nome deve conter no minimo 3 caracteres
+            </div>
     </div>
     
-    <button (click)="salvar()" class="bg-blue-800 text-white rounded p-2 mt-2">Salvar</button>
+    <button (click)="salvar()" 
+            [disabled]="!formulario.valid" 
+            class=" text-white rounded p-2 mt-2"
+            [ngClass]="habilitarBotao()"
+            >Salvar</button>
     <button (click)="cancelar()" class="bg-red-800 text-white rounded p-2 mt-2 ml-2 ">Cancelar</button>
 </form>

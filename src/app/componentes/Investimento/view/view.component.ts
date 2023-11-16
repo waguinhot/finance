@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HistoricoInterface } from 'src/app/interfaces/HistoricoInterface';
 import { InvestimentoInterface } from 'src/app/interfaces/InvestimentoInterface';
@@ -21,29 +22,53 @@ export class ViewComponent implements OnInit {
     date: Date()
   }
 
-  data: string = '';
+
+  //   historic: HistoricoInterface = {
+  //     id: 0,
+  //     id_investimento: 0,
+  //     value: 0,
+  //     date: ""
+
+  // }
+
+  historic!: FormGroup;
+
 
   historico: HistoricoInterface[] = []
+
   constructor(
     private route: ActivatedRoute , 
     private router: Router , 
     private service: InvestimentoServiceService,
-    private historicoService: HistoricoService
+    private historicoService: HistoricoService,
+    private formBuilder: FormBuilder
     ) { 
 
   }
 
   ngOnInit(): void {
+
+      this.historic = this.formBuilder.group(({
+        value : ['', Validators.compose([Validators.required , Validators.pattern(/(.|\s)*\S(.|\s)*/) , Validators.minLength(3)])],
+      }))
     const id = this.route.snapshot.paramMap.get('id');
     this.service.getInvestimentoUnico(parseInt(id!)).subscribe((investimento) =>{
+
       this.investimento = investimento
-      
+
       this.historicoService.buscarHistorico(investimento.id).subscribe((historico) =>{
         this.historico = historico
       })
 
     });
 
+  }
+
+  salvar(){
+    this.historicoService.salvarHistorico(this.historic.value , this.investimento.id).subscribe(() =>{
+      
+      this.ngOnInit();
+    });
   }
 
 }

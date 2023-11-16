@@ -8,7 +8,7 @@ import { HistoricoInterface } from '../interfaces/HistoricoInterface';
 })
 export class HistoricoService {
 
-  private readonly API = 'http://investapi.test/api/';
+  private readonly API = 'http://apifinance.test/api/';
   constructor(private http: HttpClient) { }
 
   buscarHistorico(id: number):Observable<HistoricoInterface[]>{
@@ -16,7 +16,7 @@ export class HistoricoService {
     return this.http.get<HistoricoInterface[]>(url)
   }
 
-  salvarHistorico(historico: HistoricoInterface , id: number):Observable<HistoricoInterface>{
+  salvarHistorico(historico: HistoricoInterface , id: number ):Observable<HistoricoInterface>{
     const url = this.API + 'historico/store/' + id;
     return this.http.post<HistoricoInterface>(url , historico);
   }

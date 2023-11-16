@@ -9,7 +9,7 @@ import { CardComponent } from './componentes/Investimento/card/card.component';
 import { ListagemComponent } from './componentes/Investimento/listagem/listagem.component';
 import { RegisterComponent } from './componentes/Investimento/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewComponent } from './componentes/Investimento/view/view.component';
 
 @NgModule({
@@ -26,7 +26,8 @@ import { ViewComponent } from './componentes/Investimento/view/view.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
