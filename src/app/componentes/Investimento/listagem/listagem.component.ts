@@ -10,16 +10,26 @@ import { InvestimentoServiceService } from 'src/app/services/investimento-servic
 export class ListagemComponent implements OnInit {
 
 
-  listaInvestimentos: InvestimentoInterface[] = [
-    
-  ]
+  listaInvestimentos: InvestimentoInterface[] = [ ]
+  haMaisPensamentos: boolean = true;
+
+  paginaAtual: number = 1;
   constructor(private service: InvestimentoServiceService) { }
 
   ngOnInit(): void {
-    this.service.getInvestimentos().subscribe((investimentos) =>{
-      this.listaInvestimentos = investimentos
+    this.service.getInvestimentos(this.paginaAtual).subscribe((investimentos) =>{
+      this.listaInvestimentos = investimentos.data
     })    
   }
 
+  carregarMaisPensamentos(){
+    this.service.getInvestimentos(++this.paginaAtual)
+    .subscribe((lista) =>{
+      this.listaInvestimentos.push(...lista.data)
+      if(!this.listaInvestimentos.length){
+        this.haMaisPensamentos = false
+      }
+    })
+  }
 
 }

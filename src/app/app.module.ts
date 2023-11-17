@@ -11,6 +11,7 @@ import { RegisterComponent } from './componentes/Investimento/register/register.
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewComponent } from './componentes/Investimento/view/view.component';
+import { BotaoCarregarMaisComponent } from './componentes/Investimento/listagem/botao-carregar-mais/botao-carregar-mais.component'; 
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ViewComponent } from './componentes/Investimento/view/view.component';
     CardComponent,
     ListagemComponent,
     RegisterComponent,
-    ViewComponent
+    ViewComponent,
+    BotaoCarregarMaisComponent
   ],
   imports: [
     BrowserModule,

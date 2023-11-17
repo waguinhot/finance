@@ -8,7 +8,7 @@ import { HistoricoInterface } from '../interfaces/HistoricoInterface';
 })
 export class HistoricoService {
 
-  private readonly API = 'http://apifinance.test/api/';
+  private readonly API = 'http://investapi.test/api/';
   constructor(private http: HttpClient) { }
 
   buscarHistorico(id: number):Observable<HistoricoInterface[]>{

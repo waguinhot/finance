@@ -28,7 +28,10 @@
     <div *ngFor="let investimento of listaInvestimentos">
         <app-card [investimento]="investimento"></app-card>
     </div>
-    
+    <app-botao-carregar-mais
+         [haMaisPensamentos]="haMaisPensamentos"
+         (click)="carregarMaisPensamentos()"
+         ></app-botao-carregar-mais>
 </div>
 
 <ng-template #semInvestimentos>
