@@ -68,7 +68,9 @@ export class ViewComponent implements OnInit {
     if(this.historic.valid)
     {
       this.historicoService.salvarHistorico(this.historic.value , this.investimento.id).subscribe(() =>{      
-      this.ngOnInit();
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate([this.router.url])
       });
     }
    
