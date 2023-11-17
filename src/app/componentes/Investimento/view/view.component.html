@@ -38,5 +38,11 @@
         class="w-3/12 h-12 p-4 rounded bg-gray-100" 
         placeholder="adicionar novo historico">
     </div>
-     <button (click)="salvar()" class="bg-red-500 p-2 text-white rounded mt-2 font-semibold">Salvar</button>
+    <div *ngIf="historic.get('value')?.errors?.['required'] && historic.get('value')?.touched" class="text-red-600 mt-2 ml-4" >
+        O valor e obrigatorio!
+    </div>
+    <div *ngIf="historic.get('value')?.errors?.['minlength'] && historic.get('value')?.touched" class="text-red-600 mt-2 ml-4">
+        O nome deve conter no minimo 3 caracteres
+    </div>
+     <button (click)="salvar()" [disabled]="!historic.valid" [ngClass]="validBtn()" class="bg-red-500 p-2 text-white rounded mt-2 font-semibold">Salvar</button>
  </form>

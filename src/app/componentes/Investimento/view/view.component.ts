@@ -48,9 +48,9 @@ export class ViewComponent implements OnInit {
 
   ngOnInit(): void {
 
-      this.historic = this.formBuilder.group(({
-        value : ['', Validators.compose([Validators.required , Validators.pattern(/(.|\s)*\S(.|\s)*/) , Validators.minLength(3)])],
-      }))
+      this.historic = this.formBuilder.group({
+        value : ['', Validators.compose([Validators.required , Validators.pattern(/(.|\s)*\S(.|\s)*/) , Validators.minLength(3) ])],
+      })
     const id = this.route.snapshot.paramMap.get('id');
     this.service.getInvestimentoUnico(parseInt(id!)).subscribe((investimento) =>{
 
@@ -65,10 +65,21 @@ export class ViewComponent implements OnInit {
   }
 
   salvar(){
-    this.historicoService.salvarHistorico(this.historic.value , this.investimento.id).subscribe(() =>{
-      
+    if(this.historic.valid)
+    {
+      this.historicoService.salvarHistorico(this.historic.value , this.investimento.id).subscribe(() =>{      
       this.ngOnInit();
-    });
+      });
+    }
+   
+  }
+
+  validBtn(): string{
+    if(this.historic.valid)
+    {
+      return "bg-red-500 pointer";
+    }
+    return "bg-gray-300";
   }
 
 }
