@@ -1,37 +1,45 @@
-<div *ngIf="listaInvestimentos.length > 0, else semInvestimentos" >
-     <div class="flex p-10 font-bold">
+<div class="w-full">
+    <input 
+        type="search" 
+        autofocus 
+        class="bg-gray-200 h-20 rounded p-2 w-full text-2xl mt-4 mb-4" 
+        placeholder="Busca... "
+        [(ngModel)]="filtro"
+        (keyup)="pesquisar()"
+        >
+</div>
+<div *ngIf="listaInvestimentos.length > 0, else semInvestimentos">
+    <div class="flex p-10 font-bold">
         <div class="w-2/12">
-          
+
             Nome
-         </div>
-         <div class="w-2/12">
+        </div>
+        <div class="w-2/12">
             Valor
-     
-         </div>
-         <div class="w-2/12">
+
+        </div>
+        <div class="w-2/12">
             Adicional
-     
-         </div>
-         <div class="w-2/12">
+
+        </div>
+        <div class="w-2/12">
             Data do Investimento
-     
-         </div>
-         <div class="w-2/12">
+
+        </div>
+        <div class="w-2/12">
             Total
-         </div>
-     
+        </div>
+
         <div class="w-2/12 ">
             ACTIONS
         </div>
     </div>
-       
+    
     <div *ngFor="let investimento of listaInvestimentos">
         <app-card [investimento]="investimento"></app-card>
     </div>
-    <app-botao-carregar-mais
-         [haMaisPensamentos]="haMaisPensamentos"
-         (click)="carregarMaisPensamentos()"
-         ></app-botao-carregar-mais>
+    <app-botao-carregar-mais [haMaisPensamentos]="haMaisPensamentos"
+        (click)="carregarMaisPensamentos()"></app-botao-carregar-mais>
 </div>
 
 <ng-template #semInvestimentos>

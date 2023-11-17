@@ -15,15 +15,17 @@ export class InvestimentoServiceService {
  
   constructor(private http: HttpClient) { }
 
-  getInvestimentos(pagina: number): Observable<InvestimentoApiResponseInterface>
+  getInvestimentos(pagina: number, filtro: string): Observable<InvestimentoApiResponseInterface>
   {
     const itensPagina = 6;
 
-    let params = new HttpParams().set('page' , pagina);
+    let params = new HttpParams()
+    .set('page' , pagina);
+    if(filtro.trim().length > 2 ){
+      params = params.set('search' , filtro)
+    }
 
-    //.set('limit' , itensPagina)
-
-
+    console.log(params);
 
     const url = this.API + 'investimentos';
     return this.http.get<InvestimentoApiResponseInterface>(url , {params: params}); 
